@@ -12,8 +12,6 @@ struct ContentView: View {
     @State private var greenSliderValue = Double.random(in: 0...255)
     @State private var blueSliderValue = Double.random(in: 0...255)
     
-    @FocusState private var isFocused: Bool
-    
     var body: some View {
         VStack {
             ColorView(
@@ -21,23 +19,11 @@ struct ContentView: View {
                 green: greenSliderValue,
                 blue: blueSliderValue
             )
-            .onTapGesture {
-                isFocused = false
-            }
             Spacer()
             VStack {
                 SliderView(value: $redSliderValue, color: .red)
                 SliderView(value: $greenSliderValue, color: .green)
                 SliderView(value: $blueSliderValue, color: .blue)
-            }
-            .focused($isFocused)
-            .toolbar {
-                ToolbarItemGroup(placement: .keyboard) {
-                    Spacer()
-                    Button("Done") {
-                        isFocused = false
-                    }
-                }
             }
             Spacer()
         }

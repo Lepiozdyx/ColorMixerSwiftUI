@@ -31,24 +31,46 @@ struct TextFieldView: View {
     @Binding var value: Double
     @Binding var text: String
     @State private var isPresented = false
-    
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         TextField("", text: $text)
             .textFieldStyle(.roundedBorder)
             .frame(width: 50)
             .keyboardType(.decimalPad)
-            .onSubmit {
+            .focused($isFocused)
+            .onChange(of: text) { newValue in
                 if let validValue = Double(text), (0...255).contains(validValue) {
                     value = validValue
-                    return
                 }
-                isPresented.toggle()
-                text = ""
+            }
+            .onSubmit {
+                validateValues()
+                isFocused = false
             }
             .alert("Out of Range", isPresented: $isPresented, actions: {}) {
                 Text("Use a range of numbers from 0 to 255")
             }
+            .toolbar {
+                if isFocused {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Spacer()
+                        Button("Done") {
+                            validateValues()
+                            isFocused = false
+                        }
+                    }
+                }
+            }
+    }
+    
+    private func validateValues() {
+        if let validValue = Double(text), (0...255).contains(validValue) {
+            value = validValue
+        } else {
+            isPresented.toggle()
+            text = ""
+        }
     }
 }
 
