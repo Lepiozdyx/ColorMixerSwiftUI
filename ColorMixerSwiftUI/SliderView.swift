@@ -25,19 +25,38 @@ struct SliderView: View {
                     textValue = String(format: "%.0f", newValue)
                 }
                 .animation(.easeIn, value: value)
-            TextField("", text: $textValue)
-                .onSubmit {
-                    if let validValue = Double(textValue) {
-                        value = validValue
-                    }
-                }
-                .textFieldStyle(.roundedBorder)
-                .frame(width: 50)
-                .keyboardType(.decimalPad)
+            TextFieldView(value: $value, text: $textValue)
         }
     }
 }
 
+// MARK: - TextFieldView
+struct TextFieldView: View {
+    @Binding var value: Double
+    @Binding var text: String
+    @State private var isPresented = false
+    
+    var body: some View {
+        TextField("", text: $text)
+            .textFieldStyle(.roundedBorder)
+            .frame(width: 50)
+            .keyboardType(.decimalPad)
+            .onSubmit {
+                if let validValue = Double(text), (0...255).contains(validValue) {
+                    value = validValue
+                    return
+                }
+                isPresented.toggle()
+                text = ""
+            }
+            .alert("Wrong number", isPresented: $isPresented, actions: {}) {
+                Text("Use a range of numbers from 0 to 255")
+            }
+        
+    }
+}
+
+// MARK: - Prewiews
 struct SliderView_Previews: PreviewProvider {
     static var previews: some View {
         SliderView(value: .constant(250), color: .blue)
