@@ -14,11 +14,7 @@ struct SliderView: View {
     
     var body: some View {
         HStack {
-            Text("\(lround(value))")
-                .fontWeight(.semibold)
-                .foregroundColor(color)
-                .multilineTextAlignment(.leading)
-                .frame(width: 40)
+            TextView(color: color, value: $value)
             Slider(value: $value, in: 0...255, step: 1)
                 .tint(color)
                 .onChange(of: value) { newValue in
@@ -36,6 +32,7 @@ struct TextFieldView: View {
     @Binding var text: String
     @State private var isPresented = false
     
+    
     var body: some View {
         TextField("", text: $text)
             .textFieldStyle(.roundedBorder)
@@ -52,13 +49,19 @@ struct TextFieldView: View {
             .alert("Wrong number", isPresented: $isPresented, actions: {}) {
                 Text("Use a range of numbers from 0 to 255")
             }
-        
     }
 }
 
-// MARK: - Prewiews
-struct SliderView_Previews: PreviewProvider {
-    static var previews: some View {
-        SliderView(value: .constant(250), color: .blue)
+// MARK: - TextView
+struct TextView: View {
+    let color: Color
+    @Binding var value: Double
+    
+    var body: some View {
+        Text("\(lround(value))")
+            .fontWeight(.semibold)
+            .foregroundColor(color)
+            .multilineTextAlignment(.leading)
+            .frame(width: 40)
     }
 }
