@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var blueSliderValue = Double.random(in: 0...255)
     
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
             ColorView(
                 red: redSliderValue,
                 green: greenSliderValue,
@@ -38,26 +38,6 @@ struct ColorView: View {
         RoundedRectangle(cornerRadius: 50)
             .foregroundColor(Color(red: red/255, green: green/255, blue: blue/255))
             .frame(width: 340 ,height: 280)
-    }
-}
-
-// MARK: - SliderView
-struct SliderView: View {
-    @Binding var value: Double
-    let color: Color
-    
-    var body: some View {
-        HStack {
-            Text("0")
-                .fontWeight(.semibold)
-                .foregroundColor(color)
-            Slider(value: $value, in: 0...255, step: 1)
-                .tint(color)
-            TextField("", value: $value, format: .number)
-                .textFieldStyle(.roundedBorder)
-                .frame(width: 50)
-                .keyboardType(.decimalPad)
-        }
     }
 }
 

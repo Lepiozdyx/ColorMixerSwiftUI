@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA9759B92A389E9400CD2D8C /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9759B82A389E9300CD2D8C /* SliderView.swift */; };
 		FAA7279C2A375EFD0014A729 /* ColorMixerSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA7279B2A375EFD0014A729 /* ColorMixerSwiftUIApp.swift */; };
 		FAA7279E2A375EFD0014A729 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA7279D2A375EFD0014A729 /* ContentView.swift */; };
 		FAA727A02A375EFF0014A729 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAA7279F2A375EFF0014A729 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA9759B82A389E9300CD2D8C /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		FAA727982A375EFD0014A729 /* ColorMixerSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorMixerSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA7279B2A375EFD0014A729 /* ColorMixerSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorMixerSwiftUIApp.swift; sourceTree = "<group>"; };
 		FAA7279D2A375EFD0014A729 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			children = (
 				FAA7279B2A375EFD0014A729 /* ColorMixerSwiftUIApp.swift */,
 				FAA7279D2A375EFD0014A729 /* ContentView.swift */,
+				FA9759B82A389E9300CD2D8C /* SliderView.swift */,
 				FAA7279F2A375EFF0014A729 /* Assets.xcassets */,
 				FAA727A12A375EFF0014A729 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA9759B92A389E9400CD2D8C /* SliderView.swift in Sources */,
 				FAA7279E2A375EFD0014A729 /* ContentView.swift in Sources */,
 				FAA7279C2A375EFD0014A729 /* ColorMixerSwiftUIApp.swift in Sources */,
 			);
