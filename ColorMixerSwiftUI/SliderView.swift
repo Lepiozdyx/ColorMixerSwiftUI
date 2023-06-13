@@ -14,11 +14,11 @@ struct SliderView: View {
     
     var body: some View {
         HStack {
-            TextView(color: color, value: $value)
+            TextView(value: $value, color: color)
             Slider(value: $value, in: 0...255, step: 1)
                 .tint(color)
                 .onChange(of: value) { newValue in
-                    textValue = String(format: "%.0f", newValue)
+                    textValue = "\(lround(newValue))"
                 }
                 .animation(.easeIn, value: value)
             TextFieldView(value: $value, text: $textValue)
@@ -46,7 +46,7 @@ struct TextFieldView: View {
                 isPresented.toggle()
                 text = ""
             }
-            .alert("Wrong number", isPresented: $isPresented, actions: {}) {
+            .alert("Out of Range", isPresented: $isPresented, actions: {}) {
                 Text("Use a range of numbers from 0 to 255")
             }
     }
@@ -54,8 +54,8 @@ struct TextFieldView: View {
 
 // MARK: - TextView
 struct TextView: View {
-    let color: Color
     @Binding var value: Double
+    let color: Color
     
     var body: some View {
         Text("\(lround(value))")
