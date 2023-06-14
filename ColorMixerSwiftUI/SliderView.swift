@@ -39,15 +39,6 @@ struct TextFieldView: View {
             .frame(width: 50)
             .keyboardType(.decimalPad)
             .focused($isFocused)
-            .onChange(of: text) { newValue in
-                if let validValue = Double(text), (0...255).contains(validValue) {
-                    value = validValue
-                }
-            }
-            .onSubmit {
-                validateValues()
-                isFocused = false
-            }
             .alert("Out of Range", isPresented: $isPresented, actions: {}) {
                 Text("Use a range of numbers from 0 to 255")
             }
