@@ -13,6 +13,7 @@
 - Displays the current value of each slider in the corresponding label.
 - Entering numeric values in text fields to set the color value.
 - Change the background of the view in real time according to the selected colors.
+- Сhanges in text fields are applied by pressing the Done button or by tapping the screen.
 
 **Questions Solved**
 
