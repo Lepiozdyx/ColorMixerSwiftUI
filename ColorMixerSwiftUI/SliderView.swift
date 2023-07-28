@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SliderView: View {
+    
     @Binding var value: Double
     @State private var textValue = ""
     @State private var isPresented = false

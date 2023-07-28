@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     @State private var redSliderValue = Double.random(in: 0...255).rounded()
     @State private var greenSliderValue = Double.random(in: 0...255).rounded()
     @State private var blueSliderValue = Double.random(in: 0...255).rounded()
@@ -54,7 +55,7 @@ struct ColorView: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 50)
             .foregroundColor(Color(red: red/255, green: green/255, blue: blue/255))
-            .frame(height: 280)
+            .frame(height: 260)
     }
 }
 
